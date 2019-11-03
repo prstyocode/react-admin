@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  display: flex;
 }
 
 .App-logo {
@@ -19,4 +20,31 @@
 
 .App-link {
   color: #09d3ac;
+}
+
+.main-header {
+  width: 100%;
+  background-color: #fff;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.main-header.aside {
+  color: #fff;
+  background-color: #4e73df;
+}
+
+.sidebar-divider {
+  margin: 0 1rem 0 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.shadow {
+  box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15) !important;
+}
+
+.toggle-button {
+  background: transparent;
+  border: none;
+  padding: unset;
 }
