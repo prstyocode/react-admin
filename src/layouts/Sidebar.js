@@ -1,7 +1,12 @@
-import React from "react";
+import React, {useContext, useEffect} from "react";
 import { Accordion, Card } from "react-bootstrap";
+import Context from "../context/root"
 
-export default function Sidebar() {
+const Sidebar = props => {
+  const context = useContext(Context)
+  useEffect(() => {
+    console.log(context)
+  }, [])
   return (
     <aside style={sidebarStyle}>
       <header className="main-header aside">
@@ -55,3 +60,5 @@ let cardStyle = {
 };
 
 let accordionStyle = { borderBottom: "0px", textAlign: "left" };
+
+export default Sidebar;

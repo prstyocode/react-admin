@@ -6,7 +6,7 @@ import {
 } from "./types";
 
 const addPostToBookmark = (state, post) => {
-  console.log(state, post);
+  return {...state, bookmarks: [...state.bookmarks, post]}
 };
 const removePostFromBookmark = (state, postId) => {
   console.log(state);
