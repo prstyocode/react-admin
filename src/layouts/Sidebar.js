@@ -1,14 +1,18 @@
-import React, {useContext, useEffect} from "react";
-import { Accordion, Card } from "react-bootstrap";
-import Context from "../context/root"
+import React, { useContext, useEffect } from "react";
+import { Accordion, Card, Col, Row } from "react-bootstrap";
+import Context from "../context/root";
 
 const Sidebar = props => {
-  const context = useContext(Context)
+  const context = useContext(Context);
   useEffect(() => {
-    console.log(context)
-  }, [])
+    console.log(context);
+  }, []);
   return (
-    <aside style={sidebarStyle}>
+    <aside
+      className={
+        context.isToggledSidebar ? "sidebar-active" : "sidebar-collapse"
+      }
+    >
       <header className="main-header aside">
         <div style={sideBarHeaderStyle}>Admin</div>
       </header>
@@ -16,42 +20,56 @@ const Sidebar = props => {
       <Accordion defaultActiveKey="0">
         {context.sideBarMenu.map((menu, i) => (
           <Card style={cardStyle} key={i}>
-            {menu.child ?
+            {menu.child ? (
               <React.Fragment>
                 <Accordion.Toggle
                   as={Card.Header}
                   eventKey={i}
                   style={accordionStyle}
                 >
-                  <i className={"fas "+menu.icon+" mr-2"}></i>{menu.title}
+                  <Row>
+                    <Col md={1}>
+                      <i className={"fas " + menu.icon + " mr-2"}></i>
+                    </Col>
+                    <Col
+                      className={context.isToggledSidebar ? "" : "none-display"}
+                    >
+                      {menu.title}
+                    </Col>
+                  </Row>
                 </Accordion.Toggle>
                 {menu.child.map((childMenu, ii) => (
                   <Accordion.Collapse eventKey={i} key={ii}>
                     <Card.Body style={accordionStyle}>
-                      <i className={"fas "+childMenu.icon+" mr-2"}></i>{childMenu.title}
+                      <Row>
+                        <Col md={1}>
+                          <i className={"fas " + childMenu.icon + " mr-2"}></i>
+                        </Col>
+                        <Col
+                          className={
+                            context.isToggledSidebar ? "" : "none-display"
+                          }
+                        >
+                          <p>{childMenu.title}</p>
+                        </Col>
+                      </Row>
                     </Card.Body>
                   </Accordion.Collapse>
                 ))}
-              </React.Fragment> : 
+              </React.Fragment>
+            ) : (
               <Accordion as={Card.Header} style={accordionStyle}>
-                <i className={"fas "+menu.icon+" mr-2"}></i>{menu.title}
+                <i className={"fas " + menu.icon + " mr-2"}></i>
+                {menu.title}
               </Accordion>
-            }
+            )}
           </Card>
         ))}
       </Accordion>
     </aside>
   );
-}
-let sideBarHeaderStyle = { padding: ".5rem 1rem" };
-
-let sidebarStyle = {
-  backgroundColor: "#4e73df",
-  backgroundImage: "linear-gradient(180deg,#4e73df 10%,#224abe 100%)",
-  backgroundSize: "cover",
-  width: "230px",
-  height: "auto"
 };
+let sideBarHeaderStyle = { padding: ".5rem 1rem" };
 
 let cardStyle = {
   border: "none",

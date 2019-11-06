@@ -2,7 +2,11 @@ import React, { useReducer } from "react";
 
 import Context from "./root";
 import { reducer } from "./reducers";
-import { ADD_POST_TO_BOOKMARK, REMOVE_POST_FROM_BOOKMARK } from "./types";
+import {
+  ADD_POST_TO_BOOKMARK,
+  REMOVE_POST_FROM_BOOKMARK,
+  TOGGLE_SIDEBAR
+} from "./types";
 
 const GlobalState = props => {
   const crudList = [
@@ -15,7 +19,7 @@ const GlobalState = props => {
       title: "Create",
       icon: "fa-pen",
       link: "/create"
-    },
+    }
   ];
 
   const globState = {
@@ -30,21 +34,22 @@ const GlobalState = props => {
       {
         title: "Dashboard",
         icon: "fa-tachometer-alt",
-        child: [],
+        child: []
       },
       {
         title: "Post",
         icon: "fa-book",
-        child: crudList,
+        child: crudList
       },
       {
         title: "Yorozeya",
         icon: "fa-eye",
-        child: [],
+        child: []
       }
-    ]
-  }
-    
+    ],
+    isToggledSidebar: true
+  };
+
   const [state, dispatch] = useReducer(reducer, globState);
 
   const addPostToBookmark = post => {
@@ -55,14 +60,18 @@ const GlobalState = props => {
     dispatch({ type: REMOVE_POST_FROM_BOOKMARK, postId });
   };
 
+  const toggleSidebar = () => dispatch({ type: TOGGLE_SIDEBAR });
+
   return (
     <Context.Provider
       value={{
         posts: state.posts,
         bookmarks: state.bookmarks,
         sideBarMenu: state.sideBarMenu,
+        isToggledSidebar: state.isToggledSidebar,
         addPostToBookmark: addPostToBookmark,
-        removePostFromBookmark: removePostFromBookmark
+        removePostFromBookmark: removePostFromBookmark,
+        toggleSidebar: toggleSidebar
       }}
     >
       {props.children}

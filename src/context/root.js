@@ -4,5 +4,6 @@ export default React.createContext({
   posts: [],
   bookmarks: [],
   addPostToBookmark: post => {},
-  removePostFromBookmark: postId => {}
+  removePostFromBookmark: postId => {},
+  toggleSidebar: () => {}
 });

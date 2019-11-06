@@ -1,13 +1,21 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import { Nav, Form, FormControl, Button } from "react-bootstrap";
+import Context from "../context/root";
 
-export default function Navbar() {
+const Navbar = () => {
+  const context = useContext(Context);
+  useEffect(() => {
+    // console.log(context);
+  }, []);
   return (
     <Nav
       activeKey="/home"
       onSelect={selectedKey => alert(`selected ${selectedKey}`)}
     >
-      <button className="toggle-button ml-3">
+      <button
+        className="toggle-button ml-3"
+        onClick={() => context.toggleSidebar()}
+      >
         <i className="fas fa-bars fa-lg" style={barStyle}></i>
       </button>
       <Nav.Item className="ml-auto">
@@ -27,9 +35,11 @@ export default function Navbar() {
       </Nav.Item>
     </Nav>
   );
-}
+};
 
 let barStyle = {
   top: "24px",
   position: "absolute"
 };
+
+export default Navbar;

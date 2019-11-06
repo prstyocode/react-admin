@@ -5,7 +5,7 @@ import DashboardCard from "./dashboard/Card";
 
 export default function Main() {
   return (
-    <Container>
+    <Container className="full-width">
       <Row className="shadow mb-5">
         <Header />
       </Row>
