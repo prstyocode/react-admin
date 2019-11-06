@@ -14,30 +14,31 @@ const Sidebar = props => {
       </header>
       <hr className="sidebar-divider"></hr>
       <Accordion defaultActiveKey="0">
-        <Card style={cardStyle}>
-          <Accordion as={Card.Header} style={accordionStyle}>
-            <i className="fas fa-tachometer-alt mr-2"></i>Dashboard
-          </Accordion>
-        </Card>
-        <Card style={cardStyle}>
-          <Accordion.Toggle
-            as={Card.Header}
-            eventKey="1"
-            style={accordionStyle}
-          >
-            <i className="fas fa-book mr-2"></i>Post
-          </Accordion.Toggle>
-          <Accordion.Collapse eventKey="1">
-            <Card.Body style={accordionStyle}>
-              <i className="fas fa-stream mr-2"></i>Lists
-            </Card.Body>
-          </Accordion.Collapse>
-          <Accordion.Collapse eventKey="1">
-            <Card.Body style={accordionStyle}>
-              <i className="fas fa-pencil-alt mr-2"></i>Create
-            </Card.Body>
-          </Accordion.Collapse>
-        </Card>
+        {context.sideBarMenu.map((menu, i) => (
+          <Card style={cardStyle} key={i}>
+            {menu.child ?
+              <React.Fragment>
+                <Accordion.Toggle
+                  as={Card.Header}
+                  eventKey={i}
+                  style={accordionStyle}
+                >
+                  <i className={"fas "+menu.icon+" mr-2"}></i>{menu.title}
+                </Accordion.Toggle>
+                {menu.child.map((childMenu, ii) => (
+                  <Accordion.Collapse eventKey={i} key={ii}>
+                    <Card.Body style={accordionStyle}>
+                      <i className={"fas "+childMenu.icon+" mr-2"}></i>{childMenu.title}
+                    </Card.Body>
+                  </Accordion.Collapse>
+                ))}
+              </React.Fragment> : 
+              <Accordion as={Card.Header} style={accordionStyle}>
+                <i className={"fas "+menu.icon+" mr-2"}></i>{menu.title}
+              </Accordion>
+            }
+          </Card>
+        ))}
       </Accordion>
     </aside>
   );
