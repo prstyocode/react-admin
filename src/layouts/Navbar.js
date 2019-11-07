@@ -21,7 +21,9 @@ const Navbar = () => {
       <Nav.Item className="ml-auto">
         <Form inline>
           <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-          <Button variant="outline-success">Search</Button>
+          <button className="search-button">
+            <i class="fas fa-search"></i>
+          </button>
         </Form>
       </Nav.Item>
       <Nav.Item>
