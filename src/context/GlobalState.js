@@ -47,7 +47,8 @@ const GlobalState = props => {
         child: []
       }
     ],
-    isToggledSidebar: true
+    isToggledSidebar: true,
+    appName: "Re:Admin"
   };
 
   const [state, dispatch] = useReducer(reducer, globState);
@@ -69,6 +70,7 @@ const GlobalState = props => {
         bookmarks: state.bookmarks,
         sideBarMenu: state.sideBarMenu,
         isToggledSidebar: state.isToggledSidebar,
+        appName: state.appName,
         addPostToBookmark: addPostToBookmark,
         removePostFromBookmark: removePostFromBookmark,
         toggleSidebar: toggleSidebar

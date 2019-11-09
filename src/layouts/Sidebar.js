@@ -14,7 +14,11 @@ const Sidebar = props => {
       }
     >
       <header className="main-header aside">
-        <div style={sideBarHeaderStyle}>Admin</div>
+        <div style={sideBarHeaderStyle}>
+          {context.isToggledSidebar
+            ? context.appName
+            : context.appName.charAt(0)}
+        </div>
       </header>
       <hr className="sidebar-divider"></hr>
       <Accordion defaultActiveKey="0">
