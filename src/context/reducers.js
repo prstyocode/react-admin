@@ -18,7 +18,7 @@ const toggleSidebar = state => {
 };
 
 const dataTableSortBy = (state, title) => {
-  state.dataTable.content = state.dataTable.contents.sort((a, b) =>
+  state.dataTable.contents.sort((a, b) =>
     a[title].localeCompare(b[title])
   );
   return { ...state };
