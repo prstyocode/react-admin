@@ -22,7 +22,7 @@ const Navbar = () => {
         <Form inline>
           <FormControl type="text" placeholder="Search" className="mr-sm-2" />
           <button className="search-button">
-            <i class="fas fa-search"></i>
+            <i className="fas fa-search"></i>
           </button>
         </Form>
       </Nav.Item>
