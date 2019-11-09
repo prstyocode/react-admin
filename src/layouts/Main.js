@@ -2,6 +2,7 @@ import React from "react";
 import { Container, Row } from "react-bootstrap";
 import Header from "./Header";
 import DashboardCard from "./dashboard/Card";
+import DataTable from "./dashboard/DataTable";
 
 export default function Main() {
   return (
@@ -10,6 +11,8 @@ export default function Main() {
         <Header />
       </Row>
       <DashboardCard />
+      <hr></hr>
+      <DataTable />
     </Container>
   );
 }

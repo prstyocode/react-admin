@@ -5,7 +5,8 @@ import { reducer } from "./reducers";
 import {
   ADD_POST_TO_BOOKMARK,
   REMOVE_POST_FROM_BOOKMARK,
-  TOGGLE_SIDEBAR
+  TOGGLE_SIDEBAR,
+  DATA_TABLE_SORT_BY
 } from "./types";
 
 const GlobalState = props => {
@@ -48,7 +49,47 @@ const GlobalState = props => {
       }
     ],
     isToggledSidebar: true,
-    appName: "Re:Admin"
+    appName: "Re:Admin",
+    dataTable: {
+      titles: ["id", "name", "address", "created at"],
+      contents: [
+        {
+          id: 1,
+          name: "Asuka Langley",
+          address: "Germania",
+          createdAt:
+            new Date().getDay() +
+            "-" +
+            new Date().getMonth() +
+            "-" +
+            new Date().getFullYear()
+        },
+        {
+          id: 2,
+          name: "Boris",
+          address: "New South",
+          createdAt:
+            new Date().getDay() -
+            1 +
+            "-" +
+            new Date().getMonth() +
+            "-" +
+            new Date().getFullYear()
+        },
+        {
+          id: 3,
+          name: "Eri",
+          address: "Fukuoka Prefecture",
+          createdAt:
+            new Date().getDay() -
+            5 +
+            "-" +
+            new Date().getMonth() +
+            "-" +
+            new Date().getFullYear()
+        }
+      ]
+    }
   };
 
   const [state, dispatch] = useReducer(reducer, globState);
@@ -63,6 +104,11 @@ const GlobalState = props => {
 
   const toggleSidebar = () => dispatch({ type: TOGGLE_SIDEBAR });
 
+  const dataTableSortBy = title => {
+    // console.log(title);
+    dispatch({ type: DATA_TABLE_SORT_BY, title });
+  };
+
   return (
     <Context.Provider
       value={{
@@ -71,9 +117,11 @@ const GlobalState = props => {
         sideBarMenu: state.sideBarMenu,
         isToggledSidebar: state.isToggledSidebar,
         appName: state.appName,
+        dataTable: state.dataTable,
         addPostToBookmark: addPostToBookmark,
         removePostFromBookmark: removePostFromBookmark,
-        toggleSidebar: toggleSidebar
+        toggleSidebar: toggleSidebar,
+        dataTableSortBy: dataTableSortBy
       }}
     >
       {props.children}

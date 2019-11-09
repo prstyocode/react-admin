@@ -5,5 +5,6 @@ export default React.createContext({
   bookmarks: [],
   addPostToBookmark: post => {},
   removePostFromBookmark: postId => {},
-  toggleSidebar: () => {}
+  toggleSidebar: () => {},
+  dataTableSortBy: title => {}
 });
