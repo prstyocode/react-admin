@@ -58,7 +58,7 @@ const GlobalState = props => {
           name: "Asuka Langley",
           address: "Germania",
           createdAt:
-            new Date().getDay() +
+            new Date().getDate() +
             "-" +
             new Date().getMonth() +
             "-" +
@@ -69,7 +69,7 @@ const GlobalState = props => {
           name: "Boris",
           address: "New South",
           createdAt:
-            new Date().getDay() -
+            new Date().getDate() -
             1 +
             "-" +
             new Date().getMonth() +
@@ -81,14 +81,15 @@ const GlobalState = props => {
           name: "Eri",
           address: "Fukuoka Prefecture",
           createdAt:
-            new Date().getDay() -
+            new Date().getDate() -
             5 +
             "-" +
             new Date().getMonth() +
             "-" +
             new Date().getFullYear()
         }
-      ]
+      ],
+      sortType: "asc"
     }
   };
 
