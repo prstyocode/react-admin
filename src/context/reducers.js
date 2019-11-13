@@ -19,24 +19,24 @@ const toggleSidebar = state => {
 
 const dataTableSortBy = (state, title) => {
   state.dataTable.contents.sort((a, b) => {
-    if (state.dataTable.sortType === 'asc') {
-      if(typeof a[title] == 'string') return a[title].localeCompare(b[title])
-      if(typeof a[title] == 'number') return a[title] < b[title] ? 1 : -1    
+    if (state.dataTable.sortType === "asc") {
+      if (typeof a[title] == "string") return a[title].localeCompare(b[title]);
+      if (typeof a[title] == "number") return a[title] < b[title] ? 1 : -1;
     }
 
-    if (state.dataTable.sortType === 'desc') {
-      if(typeof a[title] == 'string') return b[title].localeCompare(a[title])
-      if (typeof a[title] == 'number') return a[title] > b[title] ? 1 : -1
+    if (state.dataTable.sortType === "desc") {
+      if (typeof a[title] == "string") return b[title].localeCompare(a[title]);
+      if (typeof a[title] == "number") return a[title] > b[title] ? 1 : -1;
     }
     return 0;
   });
-  
+
   if (state.dataTable.sortType === "asc") {
-    state.dataTable.sortType = "desc"
+    state.dataTable.sortType = "desc";
   } else {
-    state.dataTable.sortType = "asc"
+    state.dataTable.sortType = "asc";
   }
-  
+
   return { ...state };
 };
 
