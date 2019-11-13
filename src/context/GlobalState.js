@@ -89,7 +89,9 @@ const GlobalState = props => {
             new Date().getFullYear()
         }
       ],
-      sortType: "asc"
+      sortType: "asc",
+      canEdit: true,
+      canDelete: true
     }
   };
 

@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import { Table } from "react-bootstrap";
 import Context from "../../context/root";
+import { Col, Row } from "react-bootstrap";
 
 const DataTable = props => {
   const context = useContext(Context);
@@ -16,6 +17,11 @@ const DataTable = props => {
               {data}
             </th>
           ))}
+          {context.dataTable.canEdit || context.dataTable.canDelete ? (
+            <th>Action</th>
+          ) : (
+            ""
+          )}
         </tr>
       </thead>
       <tbody>
@@ -25,6 +31,32 @@ const DataTable = props => {
             <td>{content.name}</td>
             <td>{content.address}</td>
             <td>{content.createdAt}</td>
+            {context.dataTable.canEdit || context.dataTable.canDelete ? (
+              <td>
+                <Row>
+                  {context.dataTable.canEdit ? (
+                    <Col>
+                      <button className="toggle-button">
+                        <i className="far fa-edit mr-2"></i>Edit
+                      </button>
+                    </Col>
+                  ) : (
+                    ""
+                  )}
+                  {context.dataTable.canDelete ? (
+                    <Col>
+                      <button className="toggle-button">
+                        <i className="far fa-trash-alt mr-2"></i>Delete
+                      </button>
+                    </Col>
+                  ) : (
+                    ""
+                  )}
+                </Row>
+              </td>
+            ) : (
+              ""
+            )}
           </tr>
         ))}
       </tbody>
