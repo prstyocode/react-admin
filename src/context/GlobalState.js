@@ -51,7 +51,12 @@ const GlobalState = props => {
     isToggledSidebar: true,
     appName: "Re:Admin",
     dataTable: {
-      titles: ["id", "name", "address", "created at"],
+      titles: [
+        { title: "id", sortable: true },
+        { title: "name", sortable: false },
+        { title: "address", sortable: true },
+        { title: "created at", sortable: false }
+      ],
       contents: [
         {
           id: 1,

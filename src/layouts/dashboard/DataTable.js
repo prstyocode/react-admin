@@ -13,8 +13,14 @@ const DataTable = props => {
       <thead>
         <tr>
           {context.dataTable.titles.map((data, i) => (
-            <th key={i} onClick={() => context.dataTableSortBy(data)}>
-              {data}
+            <th
+              key={i}
+              onClick={() =>
+                data.sortable ? context.dataTableSortBy(data.title) : null
+              }
+              className="table-head"
+            >
+              {data.title}
             </th>
           ))}
           {context.dataTable.canEdit || context.dataTable.canDelete ? (

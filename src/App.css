@@ -85,3 +85,7 @@
   position: relative;
   opacity: 0.7;
 }
+
+.table-head:hover {
+  cursor: default;
+}
