@@ -3,6 +3,7 @@ import { Container, Row } from "react-bootstrap";
 import Header from "./Header";
 import DashboardCard from "./dashboard/Card";
 import DataTable from "./dashboard/DataTable";
+import BasicForm from "./form/BasicForm";
 
 export default function Main() {
   return (
@@ -13,6 +14,8 @@ export default function Main() {
       <DashboardCard />
       <hr></hr>
       <DataTable />
+      <hr></hr>
+      <BasicForm />
     </Container>
   );
 }
