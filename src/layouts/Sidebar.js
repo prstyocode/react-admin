@@ -79,7 +79,8 @@ let cardStyle = {
   border: "none",
   borderRadius: "0px",
   color: "white",
-  backgroundColor: "#4e73df"
+  backgroundColor: "#4e73df",
+  cursor: "default"
 };
 
 let accordionStyle = { borderBottom: "0px", textAlign: "left" };

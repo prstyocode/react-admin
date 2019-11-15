@@ -1,5 +1,4 @@
 .App {
-  text-align: center;
   display: flex;
 }
 
@@ -27,11 +26,13 @@
   background-color: #fff;
   padding-top: 10px;
   padding-bottom: 10px;
+  text-align: center;
 }
 
 .main-header.aside {
   color: #fff;
   background-color: #4e73df;
+  cursor: default;
 }
 
 .sidebar-divider {
