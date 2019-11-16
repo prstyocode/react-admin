@@ -39,26 +39,20 @@ const DataTable = props => {
             <td>{content.createdAt}</td>
             {context.dataTable.canEdit || context.dataTable.canDelete ? (
               <td>
-                <Row>
                   {context.dataTable.canEdit ? (
-                    <Col>
-                      <button className="toggle-button">
+                      <button className="toggle-button mr-2">
                         <i className="far fa-edit mr-2"></i>Edit
                       </button>
-                    </Col>
                   ) : (
                     ""
                   )}
                   {context.dataTable.canDelete ? (
-                    <Col>
                       <button className="toggle-button">
                         <i className="far fa-trash-alt mr-2"></i>Delete
                       </button>
-                    </Col>
                   ) : (
                     ""
                   )}
-                </Row>
               </td>
             ) : (
               ""
